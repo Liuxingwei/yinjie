@@ -10,6 +10,12 @@ app.set('view engine', 'handlebars');
 
 app.set('port', 3000);
 
+app.use(express.static(__dirname + '/public'));
+
+app.get('/index', function (req, res) {
+    res.render("index");
+});
+
 app.use(function(req, res) {
     res.type('text/plain');
     res.status(404);
