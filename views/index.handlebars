@@ -1,1 +1,41 @@
-hello
+{{#section 'css'}}
+<link rel="stylesheet" href="/css/index.css">
+{{/section}}
+{{#sectin behindjs}}
+    <script>
+        $(function () {
+            let categoryTemplate = Handlebars.compile($('#category-template').html());
+            let categoryList = $('#category-list');
+            categoryList.html(categoryTemplate({}))
+        });
+    </script>
+{{/sectin}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" id="category-list">
+
+        </div>
+        <div class="col-8" id="right_section">
+            <div id="dior-div" class="collapse show">
+                <ul>
+                    <li><a href="https://item.mercari.com/jp/m46588941953/" target="_blank">dior ¥ 2,111</a></li>
+                    <li><a href="https://item.mercari.com/jp/m21831501820/" target="_blank">★Dior★  スキン フォーエバー アンダーカバー ¥ 4,100</a></li>
+                </ul>
+            </div>
+            <div id="celien-div" class="collapse">celien</div>
+            <div id="fendi-div" class="collapse">fendi</div>
+            <div id="louis-div" class="collapse">louis</div>
+            <div id="chanel-div" class="collapse">chanel</div>
+        </div>
+    </div>
+</div>
+<template id="category-template" type="text/x-handlebars-template">
+    <ul class="list-group">
+    \{{#each categorys}}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            \{{name}}
+            <span class="badge badge-danger badge-pill">\{{number}}</span>
+        </li>
+    \{{/each}}
+    </ul>
+</template>
