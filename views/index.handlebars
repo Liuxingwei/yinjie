@@ -40,7 +40,7 @@
             let louisList = $('#louis-div');
             let chanelList = $('#chanel-div');
 
-            diorList.html(productTemplate({
+            diorList.find(".first").html(productTemplate({
                 products: [
                     {
                         name: 'クリスチャンディオール ブレスレット',
@@ -100,7 +100,7 @@
                 ]
             }));
 
-            celienList.html(productTemplate({
+            celienList.find(".first").html(productTemplate({
                 products: [
                     {
                         name: 'Supreme スナップバック キャップ',
@@ -115,7 +115,7 @@
                 ]
             }));
 
-            fendiList.html(productTemplate({
+            fendiList.find(".first").html(productTemplate({
                 products: [
                     {
                         name: 'FENDI フェンディ 折財布',
@@ -160,7 +160,7 @@
                 ]
             }));
 
-            louisList.html(productTemplate({
+            louisList.find(".first").html(productTemplate({
                 products: [
                     {
                         name: 'ルイヴィトン エピ',
@@ -190,7 +190,7 @@
                 ]
             }));
 
-            chanelList.html(productTemplate({
+            chanelList.find(".first").html(productTemplate({
                 products: [
                     {
                         name: 'CHANEL シャネル サングラス',
@@ -209,6 +209,31 @@
                     },
                 ]
             }));
+            $('#category-list').on('click', 'li', function () {
+                $("#right_section div").removeClass('show');
+                $('#' + $(this).data('id') + '-div').addClass('show');
+                $('#category-list li').removeClass('text-white').removeClass('bg-primary');
+                $(this).addClass('text-white').addClass('bg-primary');
+            });
+            $('#right_section').on('click', 'ul.first li', function () {
+                let parentDiv = $($(this).parents('div')[0]);
+                let label = parentDiv.data('id');
+                $(this).appendTo(parentDiv.find('ul.last'));
+                $(this).find('span:first').remove();
+                let number = parseInt($('#category-list [data-id="' + label + '"] span').html());
+                $('#category-list [data-id="' + label + '"] span').html(number - 1);
+            });
+            $('#right_section').on('click', '.delete', function () {
+                let parentUl = $($(this).parents('ul')[0]);
+                if (parentUl.hasClass('first')) {
+                    let parentDiv = $($(this).parents('div')[0]);
+                    let label = parentDiv.data('id');
+                    let number = parseInt($('#category-list [data-id="' + label + '"] span').html());
+                    $('#category-list [data-id="' + label + '"] span').html(number - 1);
+                }
+                $($(this).parents('li')[0]).remove();
+            });
+            $('#category-list li:first').addClass('bg-primary').addClass('text-white');
         });
     </script>
 {{/section}}
@@ -216,18 +241,38 @@
     <div class="row">
         <div class="col" id="category-list"></div>
         <div class="col-8" id="right_section">
-            <div id="dior-div" class="collapse show"></div>
-            <div id="celien-div" class="collapse"></div>
-            <div id="fendi-div" class="collapse"></div>
-            <div id="louis-div" class="collapse"></div>
-            <div id="chanel-div" class="collapse"></div>
+            <div id="dior-div" class="collapse show" data-id="dior">
+                <ul class="first"></ul>
+                <hr>
+                <ul class="last"></ul>
+            </div>
+            <div id="celien-div" class="collapse" data-id="celien">
+                <ul class="first"></ul>
+                <hr>
+                <ul class="last"></ul>
+            </div>
+            <div id="fendi-div" class="collapse" data-id="fendi">
+                <ul class="first"></ul>
+                <hr>
+                <ul class="last"></ul>
+            </div>
+            <div id="louis-div" class="collapse" data-id="louis">
+                <ul class="first"></ul>
+                <hr>
+                <ul class="last"></ul>
+            </div>
+            <div id="chanel-div" class="collapse" data-id="chanel">
+                <ul class="first"></ul>
+                <hr>
+                <ul class="last"></ul>
+            </div>
         </div>
     </div>
 </div>
 <template id="category-template" type="text/x-handlebars-template">
     <ul class="list-group">
     \{{#each categorys}}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item d-flex justify-content-between align-items-center" data-id="\{{name}}">
             \{{name}}
             <span class="badge badge-danger badge-pill">\{{number}}</span>
         </li>
@@ -235,11 +280,11 @@
     </ul>
 </template>
 <template id="product-template" type="text/x-handlebars-template">
-    <ul>
         \{{#each products}}
         <li>
             <a href="\{{link}}" target="_blank">\{{name}} - ¥ \{{price}}</a>
+            <span class="badge badge-danger badge-pill">new</span>
+            <span class="badge badge-primary badge-pill delete">delete</span>
         </li>
         \{{/each}}
-    </ul>
 </template>
