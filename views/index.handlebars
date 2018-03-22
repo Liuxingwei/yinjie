@@ -1,31 +1,226 @@
 {{#section 'css'}}
 <link rel="stylesheet" href="/css/index.css">
 {{/section}}
-{{#sectin behindjs}}
+{{#section 'behindjs'}}
     <script>
         $(function () {
             let categoryTemplate = Handlebars.compile($('#category-template').html());
             let categoryList = $('#category-list');
-            categoryList.html(categoryTemplate({}))
+            let categoryListContent = categoryTemplate({
+                categorys: [
+                    {
+                        name: 'dior',
+                        number: '11'
+                    },
+                    {
+                        name: 'celien',
+                        number: '2'
+                    },
+                    {
+                        name: 'fendi',
+                        number: '8'
+                    },
+                    {
+                        name: 'louis',
+                        number: '5'
+                    },
+                    {
+                        name: 'chanel',
+                        number: '3'
+                    }
+                ]
+            });
+            categoryList.html(categoryListContent);
+
+            let productTemplate = Handlebars.compile($('#product-template').html());
+
+            let diorList = $('#dior-div');
+            let celienList = $('#celien-div');
+            let fendiList = $('#fendi-div');
+            let louisList = $('#louis-div');
+            let chanelList = $('#chanel-div');
+
+            diorList.html(productTemplate({
+                products: [
+                    {
+                        name: 'クリスチャンディオール ブレスレット',
+                        price: '2,000',
+                        link: 'https://item.mercari.com/jp/m122754486/',
+                    },
+                    {
+                        name: 'Dior 化粧下地',
+                        price: '2,600',
+                        link: 'https://item.mercari.com/jp/m43722338762/',
+                    },
+                    {
+                        name: 'ディオールリップグロウ 001 新品 サンプル付き',
+                        price: '3,900',
+                        link: 'https://item.mercari.com/jp/m82431202024/',
+                    },
+                    {
+                        name: 'Dior homme 2004aw',
+                        price: '16,000',
+                        link: 'https://item.mercari.com/jp/m71234463978/',
+                    },
+                    {
+                        name: 'ディオール ロージーグロウ',
+                        price: '4,500',
+                        link: 'https://item.mercari.com/jp/m38867081572/',
+                    },
+                    {
+                        name: 'Dior グロス 236',
+                        price: '1,800',
+                        link: 'https://item.mercari.com/jp/m88066490246/',
+                    },
+                    {
+                        name: 'Diorサングラス',
+                        price: '5,000',
+                        link: 'https://item.mercari.com/jp/m70016670620/',
+                    },
+                    {
+                        name: 'ディオール Remenber Me オードトワレ',
+                        price: '2,400',
+                        link: 'https://item.mercari.com/jp/m38779282680/',
+                    },
+                    {
+                        name: 'ディオールの口紅',
+                        price: '4,300',
+                        link: 'https://item.mercari.com/jp/m71143825749/',
+                    },
+                    {
+                        name: '値下げ中☆Diorネックレス',
+                        price: '4,500',
+                        link: 'https://item.mercari.com/jp/m73982130344/',
+                    },
+                    {
+                        name: 'Dior Addict リップグロス 363 NUDE',
+                        price: '2,800',
+                        link: 'https://item.mercari.com/jp/m37274136265/',
+                    },
+                ]
+            }));
+
+            celienList.html(productTemplate({
+                products: [
+                    {
+                        name: 'Supreme スナップバック キャップ',
+                        price: '3,800',
+                        link: 'https://item.mercari.com/jp/m54737200849/',
+                    },
+                    {
+                        name: 'CELIEN アクセサリー',
+                        price: '5,000',
+                        link: 'https://item.mercari.com/jp/m17242666142/',
+                    },
+                ]
+            }));
+
+            fendiList.html(productTemplate({
+                products: [
+                    {
+                        name: 'FENDI フェンディ 折財布',
+                        price: '1,800',
+                        link: 'https://item.mercari.com/jp/m98446612031/',
+                    },
+                    {
+                        name: 'FENDI 折り財布',
+                        price: '8,000',
+                        link: 'https://item.mercari.com/jp/m52765350503/',
+                    },
+                    {
+                        name: 'FENDI フェンディー ワンピース ズッカ柄 ギャレリー gallerie',
+                        price: '10,800',
+                        link: 'https://item.mercari.com/jp/m62312874736/',
+                    },
+                    {
+                        name: 'FENDl♥️エナメルベルト',
+                        price: '999,999',
+                        link: 'https://item.mercari.com/jp/m45598790716/',
+                    },
+                    {
+                        name: '※大特価！フェンディ　ズッカ　キャンバス　長財布　黒',
+                        price: '3,000',
+                        link: 'https://item.mercari.com/jp/m74065288047/',
+                    },
+                    {
+                        name: 'FENDI ショルダーバッグ',
+                        price: '9,000',
+                        link: 'https://item.mercari.com/jp/m74060751278/',
+                    },
+                    {
+                        name: '【美品】フェンディ ボストンバッグ',
+                        price: '8,500',
+                        link: 'https://item.mercari.com/jp/m98242795611/',
+                    },
+                    {
+                        name: 'FENDI ハンドバッグ',
+                        price: '5,200',
+                        link: 'https://item.mercari.com/jp/m78746296633/',
+                    },
+                ]
+            }));
+
+            louisList.html(productTemplate({
+                products: [
+                    {
+                        name: 'ルイヴィトン エピ',
+                        price: '270,000',
+                        link: 'https://item.mercari.com/jp/m60979502554/',
+                    },
+                    {
+                        name: 'ルイヴィトン',
+                        price: '53,000',
+                        link: 'https://item.mercari.com/jp/m88236671881/',
+                    },
+                    {
+                        name: 'ルイビトン ヴェルニ ジッピーウォレット 長財布',
+                        price: '11,000',
+                        link: 'https://item.mercari.com/jp/m22346032837/',
+                    },
+                    {
+                        name: '【ゆうさん様専用】★値下げ中★ルイヴィトン カバピアノ',
+                        price: '24,000',
+                        link: 'https://item.mercari.com/jp/m53963234067/',
+                    },
+                    {
+                        name: 'ビィトン・コーチ　長財布　2個セット　ダメージ有り',
+                        price: '5,999',
+                        link: 'https://item.mercari.com/jp/m99565018418/',
+                    },
+                ]
+            }));
+
+            chanelList.html(productTemplate({
+                products: [
+                    {
+                        name: 'CHANEL シャネル サングラス',
+                        price: '5,222',
+                        link: 'https://item.mercari.com/jp/m34776249450/',
+                    },
+                    {
+                        name: 'CHANEL  ピアス',
+                        price: '8,999',
+                        link: 'https://item.mercari.com/jp/m16080201337/',
+                    },
+                    {
+                        name: 'シャネル　コインケース？',
+                        price: '9,999',
+                        link: 'https://item.mercari.com/jp/m33531805331/',
+                    },
+                ]
+            }));
         });
     </script>
-{{/sectin}}
+{{/section}}
 <div class="container-fluid">
     <div class="row">
-        <div class="col" id="category-list">
-
-        </div>
+        <div class="col" id="category-list"></div>
         <div class="col-8" id="right_section">
-            <div id="dior-div" class="collapse show">
-                <ul>
-                    <li><a href="https://item.mercari.com/jp/m46588941953/" target="_blank">dior ¥ 2,111</a></li>
-                    <li><a href="https://item.mercari.com/jp/m21831501820/" target="_blank">★Dior★  スキン フォーエバー アンダーカバー ¥ 4,100</a></li>
-                </ul>
-            </div>
-            <div id="celien-div" class="collapse">celien</div>
-            <div id="fendi-div" class="collapse">fendi</div>
-            <div id="louis-div" class="collapse">louis</div>
-            <div id="chanel-div" class="collapse">chanel</div>
+            <div id="dior-div" class="collapse show"></div>
+            <div id="celien-div" class="collapse"></div>
+            <div id="fendi-div" class="collapse"></div>
+            <div id="louis-div" class="collapse"></div>
+            <div id="chanel-div" class="collapse"></div>
         </div>
     </div>
 </div>
@@ -37,5 +232,14 @@
             <span class="badge badge-danger badge-pill">\{{number}}</span>
         </li>
     \{{/each}}
+    </ul>
+</template>
+<template id="product-template" type="text/x-handlebars-template">
+    <ul>
+        \{{#each products}}
+        <li>
+            <a href="\{{link}}" target="_blank">\{{name}} - ¥ \{{price}}</a>
+        </li>
+        \{{/each}}
     </ul>
 </template>
